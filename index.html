@@ -1,0 +1,42 @@
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vlieglessen</title>
+    <style>
+        body { padding:2vh 2vw; font-family:Calibri,Verdana,san-serif; background-image:url('imgs/background.png'); background-size:cover; }
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); grid-column-gap: 50px; grid-row-gap: 50px; padding: 10px; height: 80vh; width: 60vw; margin: auto; }
+        .grid-item { background-color:lightblue; border: 1px solid darkblue; padding: 20px; font-size: 30px; text-align: center; border-radius: 10px; cursor: pointer; box-shadow: 5px 5px #888888; }
+        .grid-item:hover { box-shadow:none; position:relative; left:5px; top:5px; } 
+        .grid-item > img {
+	width: 50%;
+	border-radius: 50%;
+}
+
+.grid-item >  h1 {
+	font-size: 60%;
+	font-weight: bold;
+}
+    </style>
+</head>
+
+<body>
+<h1>Vlieglessen</h1>
+<p>Sinds oktober 2020 ben ik lid van de Vliegclub Fryslân. Op deze site doe ik verslag van de vlieglessen die ik hier volg om (uiteindelijk, ooit) een PPL te behalen. </p>
+
+<div id="menu" class="grid-container">
+
+    <div class="grid-item" onclick="document.location='flight.html?f=4'"> <img src="imgs/flight4.png"><h1>Vlucht 4</h1> </div>
+    <div class="grid-item" onclick="document.location='flight.html?f=3'"> <img src="imgs/flight3.png"><h1>Vlucht 3</h1> </div>
+    <div class="grid-item" onclick="document.location='flight.html?f=2'"> <img src="imgs/flight2.png"><h1>Vlucht 2</h1> </div>
+    <div class="grid-item" onclick="document.location='flight.html?f=1'"> <img src="imgs/flight1.png"><h1>Vlucht 1</h1> </div>
+
+
+    
+
+
+</div>
+    
+</body>
+</html>

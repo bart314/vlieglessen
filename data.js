@@ -1,13 +1,14 @@
 var flight_data = []
 var marker
 const mymap = L.map('map');
+const f_number = new URLSearchParams(window.location.search).get('f') || 1
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     maxZoom: 50
 }).addTo(mymap);
 
-fetch('flights/flight4.json')
+fetch(`flights/flight${f_number}.json`)
 .then ( r => r.json() )
 .then ( resp => {
     show_summary([resp.summary, resp.costs])
