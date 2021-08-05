@@ -1,6 +1,11 @@
 var flight_data = []
 var marker
 const mymap = L.map('map');
+const marker_options = {   color: 'red',
+fillOpacity: 0.5,
+radius: 500,
+weight:1}
+
 const f_number = new URLSearchParams(window.location.search).get('f') || 1
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -37,15 +42,10 @@ function d(el) {
 }
 
 function drawTrack(coords) {
-	var polyline = L.polyline(coords, { weight: 6, color: 'darkblue' }).addTo(mymap);
+	var polyline = L.polyline(coords, { weight: 2, color: 'darkblue' }).addTo(mymap);
 	mymap.fitBounds(polyline.getBounds());
 
-    marker = L.circle([flight_data[0].data.lat, flight_data[0].data.lon], {
-        color: 'red',
-        fillColor: '#f03',
-        fillOpacity: 0.5,
-        radius: 500
-    }).addTo(mymap);
+    marker = L.circle([flight_data[0].data.lat, flight_data[0].data.lon], marker_options).addTo(mymap);
 }
 
 function drawElevations(eles, times) {
@@ -78,12 +78,8 @@ function drawElevations(eles, times) {
                 mymap.removeLayer(marker)
             } 
             try {
-                marker = L.circle([flight_data[dataX].data.lat, flight_data[dataX].data.lon ], {
-                    color: 'red',
-                    fillColor: '#f03',
-                    fillOpacity: 0.5,
-                    radius: 500
-                }).addTo(mymap);
+                marker = L.circle([flight_data[dataX].data.lat, flight_data[dataX].data.lon ], marker_options)
+                  .addTo(mymap);
             } catch (e) {}
         }
      }

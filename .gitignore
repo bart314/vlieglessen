@@ -1,5 +1,6 @@
-.swp
+*.swp
 .DS_Store
 *test*
 node_modules/
 package-lock.json
+flights/tmp.gpx

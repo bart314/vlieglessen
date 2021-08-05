@@ -13,7 +13,7 @@ let fetch = require('node-fetch')
 const fs = require('fs');
 
 let org_data = []
-fs.readFile('./flights/2021-07-19.gpx', (err, data) => {
+fs.readFile('flights/tmp.gpx', (err, data) => {
     let parser = new gpxParser()
     parser.parse(data)
     create_file(parser.tracks[0].points)
