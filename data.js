@@ -13,15 +13,25 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 50
 }).addTo(mymap);
 
+fetch(`flights/flight${f_number}.gpx`)
+.then ( r => r.text() )
+.then ( gpx => {
+    let parser = new gpxParser();
+    parser.parse(gpx);
+    let coordinates = parser.tracks[0].points.map(p => [p.lat.toFixed(5), p.lon.toFixed(5)]);
+    var polyline = L.polyline(coordinates, { weight: 2, color: 'darkblue' }).addTo(mymap);
+
+    // zoom the map to the polyline
+    mymap.fitBounds(polyline.getBounds());
+})
+
 fetch(`flights/flight${f_number}.json`)
 .then ( r => r.json() )
 .then ( resp => {
     show_summary([resp.summary, resp.costs])
     flight_data = resp.flight_data
-    let coords = flight_data.map( p => [p.data.lat, p.data.lon])
     let times = flight_data.map( p => p.time)
     let elevation = flight_data.map ( p => p.data.ele)
-    drawTrack(coords)
     drawElevations(elevation, times)
 })
 
@@ -39,13 +49,6 @@ function show_summary(data) {
 
 function d(el) {
     return document.getElementById(el)
-}
-
-function drawTrack(coords) {
-	var polyline = L.polyline(coords, { weight: 2, color: 'darkblue' }).addTo(mymap);
-	mymap.fitBounds(polyline.getBounds());
-
-    marker = L.circle([flight_data[0].data.lat, flight_data[0].data.lon], marker_options).addTo(mymap);
 }
 
 function drawElevations(eles, times) {
@@ -74,9 +77,7 @@ function drawElevations(eles, times) {
             const canvasPosition = Chart.helpers.getRelativePosition(e, chart);
             const dataX = chart.scales.x.getValueForPixel(canvasPosition.x);
 
-            if (marker) {
-                mymap.removeLayer(marker)
-            } 
+            if (marker) mymap.removeLayer(marker)
             try {
                 marker = L.circle([flight_data[dataX].data.lat, flight_data[dataX].data.lon ], marker_options)
                   .addTo(mymap);

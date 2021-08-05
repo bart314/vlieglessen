@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vlieglessen</title>
     <style>
-        body { padding:2vh 2vw; font-family:Calibri,Verdana,san-serif; background-image:url('imgs/background.png'); background-size:cover; }
+        body { padding:2vh 2vw; font-family:Calibri,Verdana,san-serif; }
         .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); grid-column-gap: 50px; grid-row-gap: 50px; padding: 10px; height: 80vh; width: 60vw; margin: auto; }
         .grid-item { background-color:lightblue; border: 1px solid darkblue; padding: 20px; font-size: 30px; text-align: center; border-radius: 10px; cursor: pointer; box-shadow: 5px 5px #888888; }
         .grid-item:hover { box-shadow:none; position:relative; left:5px; top:5px; } 
@@ -29,6 +29,7 @@
 
 <div id="menu" class="grid-container">
 
+    <div class="grid-item" onclick="document.location='flight.html?f=5'"> <img src="imgs/flight5.png"><h1>Vlucht 5</h1> </div>
     <div class="grid-item" onclick="document.location='flight.html?f=4'"> <img src="imgs/flight4.png"><h1>Vlucht 4</h1> </div>
     <div class="grid-item" onclick="document.location='flight.html?f=3'"> <img src="imgs/flight3.png"><h1>Vlucht 3</h1> </div>
     <div class="grid-item" onclick="document.location='flight.html?f=2'"> <img src="imgs/flight2.png"><h1>Vlucht 2</h1> </div>
