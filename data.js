@@ -62,7 +62,9 @@ function drawElevations(eles, times) {
     }
 
     //https://stackoverflow.com/a/68138981/10974490
+    //https://stackoverflow.com/a/43658507/10974490
     let options = {
+        maintainAspectRatio: false,
         plugins: {
             tooltip: {
                 mode: 'nearest',

@@ -6,16 +6,25 @@
     <title>Vlieglessen</title>
     <link rel="stylesheet" href="css/leaflet.css">
 	<style>
-        body { padding:2vh 2vw; font-family:Calibri,Verdana,san-serif; }
+        body { padding:2vh 2vw; font-family:Calibri,Verdana,san-serif; margin:0; }
         h1 { text-align:center;}
         table { margin:2vh 2vw; }
         td.costs { text-align:right; }
         tr.bold { font-weight:bold;}
-		.chart { width:50vw; height:50vh; margin-bottom:2vh; }
+		div.chart { width:50vw; height:50vh; margin-bottom:2vh; }
+
+        /* https://medium.com/samsung-internet-dev/horizontally-scrolling-panes-with-clean-html-and-modern-css-7372596932c7 */
+        @media only screen and (max-width: 768px) {
+          div.chart { width:auto; }
+          .screen { height:99vh; width:93vw; margin:0;padding:3vh 1vw; scroll-snap-align:start; scroll-snap-stop:always; }
+          main { display:grid; grid-template-rows:1fr; grid-auto-flow:column; grid-auto-columns:auto; overflow-x:scroll;  scroll-snap-type:x mandatory; }
+        }
+
 	</style>
 </head>
 <body>
-    <header>
+    <main>
+    <header class="screen">
     <h1>Vlucht <span id="date"></span></h1>
     <p id="summary"></p>
 
@@ -28,12 +37,16 @@
     </table>
     </header>
 
-	<div class="chart" id="map"></div>
+    <div class="screen">
+    	<div class="chart" id="map"></div>
+    </div>
 
-	<div class="chart">
+
+	<div class="screen chart">
 		<canvas id="elevation"></canvas>
 	</div>
 
+    <div class="screen">
     <h2>Kosten</h2>
     <table>
         <tr><td>huur vliegtuig</td><td class="costs" id="rent"></td></tr>
@@ -42,8 +55,10 @@
         <tr><td>Kosten deze vlucht</td><td class="costs" id="costs-flight"></td></tr>
         <tr class="bold"><td>Totale kosten</td><td class="costs" id="costs-total"></td></tr>
     </table>
+    </div>
 	
-    
+    </main>
+
 </body>
     <script src="js/leaflet.js"></script>
     <script src="js/GPXParser.js"></script>
