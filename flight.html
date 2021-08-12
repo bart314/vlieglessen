@@ -13,6 +13,13 @@
         tr.bold { font-weight:bold;}
 		div.chart { width:50vw; height:50vh; margin-bottom:2vh; }
 
+        table#progress { border:none; border-collapse:collapse; }
+        table#progress th { color:white; padding:8px; font-weight:normal;}
+        table#progress td { padding:6px; }
+        /* https://stackoverflow.com/a/52590332/10974490 */
+        table#progress  tbody:nth-child(odd) { background-color:green; }
+        table#progress  tbody:nth-child(even) { background-color:lightgreen; }
+
         /* https://medium.com/samsung-internet-dev/horizontally-scrolling-panes-with-clean-html-and-modern-css-7372596932c7 */
         @media only screen and (max-width: 768px) {
           div.chart { width:auto; }
@@ -55,6 +62,11 @@
         <tr><td>Kosten deze vlucht</td><td class="costs" id="costs-flight"></td></tr>
         <tr class="bold"><td>Totale kosten</td><td class="costs" id="costs-total"></td></tr>
     </table>
+    </div>
+
+    <div class="screen">
+        <h2>Voortgang</h2>
+        <table id="progress"></table>
     </div>
 	
     </main>

@@ -29,11 +29,31 @@ fetch(`flights/flight${f_number}.json`)
 .then ( r => r.json() )
 .then ( resp => {
     show_summary([resp.summary, resp.costs])
+    show_progress(resp.progress)
     flight_data = resp.flight_data
     let times = flight_data.map( p => p.time)
     let elevation = flight_data.map ( p => p.data.ele)
-    drawElevations(elevation, times)
+    sh0w_elevation(elevation, times)
 })
+
+async function show_progress(progress) {
+  create_progress_array( progress )
+  .then (data => {
+      var html = '<tr><th>Fase</th><th>Onderdeel en beschrijving</th><th>Deze vlucht</th></tr>'
+      for (let f in data) {
+          let sep = ''
+          html += '<tbody>'
+          html += `<tr><td rowspan=${data[f].length}>${f}</td>`
+          for (el of data[f]) {
+              html += `${sep}<td>${el.onderdeel} - ${el.omschrijving}</td>`
+              html += `<td>${el.grade}`
+              sep = '<tr>'
+          }
+          html += '</tbody>'
+      }
+      document.querySelector('#progress').innerHTML = html
+    })
+}
 
 function show_summary(data) {
     for (i of ['date','instructor','airplane','wheather','summary','duration','total_time']) {
@@ -51,7 +71,7 @@ function d(el) {
     return document.getElementById(el)
 }
 
-function drawElevations(eles, times) {
+function sh0w_elevation(eles, times) {
     let data = { labels:times,
         datasets: [{
           label: 'Hoogte (meters)',
@@ -89,4 +109,33 @@ function drawElevations(eles, times) {
 
     let config = { type: 'line', data, options }
     const chart = new Chart( document.getElementById('elevation'), config)
+}
+
+
+async function create_progress_array(progress) {
+  let rv = {}
+
+  await fetch('./flights/voortgang.json')
+    .then ( r => r.json() )
+    .then ( data => {
+      for (let p of progress) {
+        let f = get_fase(p[0])
+        rv[f] = rv[f] || []
+
+        let foo = data['onderdelen'].filter( e => e.id==p[0] )[0]
+	foo['grade'] = p[1]
+        rv[f].push(foo)
+      }
+    })
+  return rv
+}
+
+function get_fase(el){
+  if (el<20) return 'fase1'
+  if (el<24) return 'fase2'
+  if (el<34) return 'fase3'
+  if (el<36) return 'fase4'
+  if (el<38) return 'fase5'
+  if (el<41) return 'fase6'
+  return 'fase7'
 }
