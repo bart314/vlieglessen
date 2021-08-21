@@ -1,12 +1,27 @@
 var flight_data = []
 var marker
 const mymap = L.map('map');
-const marker_options = {   color: 'red',
-fillOpacity: 0.5,
-radius: 500,
-weight:1}
+const marker_options = {   color: 'red', fillOpacity: 0.5, radius: 500, weight:1}
+const f_number = parseInt(new URLSearchParams(window.location.search).get('f')) || 1
+const max_number = 6
 
-const f_number = new URLSearchParams(window.location.search).get('f') || 1
+if (f_number > 1) {
+    console.dir(d('vorige_vlucht'))
+    d("vorige_vlucht").href=`?f=${f_number-1}`
+} else {
+    d("vorige_vlucht").href=""
+    d("vorige_vlucht").classList.add('disabled')
+}
+
+if (f_number < max_number) {
+    let next = f_number + 1 // + is overridden to string...
+    console.log(next)
+    d('volgende_vlucht').href =`?f=${f_number + 1}`
+} else {
+    d("volgende_vlucht").href=""
+    d("volgende_vlucht").classList.add('disabled')
+}
+
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',

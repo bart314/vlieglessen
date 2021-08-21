@@ -25,13 +25,31 @@
           div.chart { width:auto; }
           .screen { height:99vh; width:93vw; margin:0;padding:3vh 1vw; scroll-snap-align:start; scroll-snap-stop:always; }
           main { display:grid; grid-template-rows:1fr; grid-auto-flow:column; grid-auto-columns:auto; overflow-x:scroll;  scroll-snap-type:x mandatory; }
+          header { display:none; }
+        }
+
+        @media only screen and (min-width:769px) {
+          header { text-align: center; display: flex; flex-direction: row; width: 80vw; position: fixed; top: 0; padding: 4vh 4vw; background-color: white; transition: 0.4s; }
+          #index-link { flex-grow: 20; text-align: left; padding-left: 1vw; }
+          header > a { flex-grow: 1; color: darkslategrey; text-decoration:none; }
+          header > a:hover { text-decoration:underline; }
+          #omschrijving { width:80vw; }
+          a.disabled { color:gray; cursor:not-allowed; }
+          a.disabled:hover { text-decoration:none;}
+          main { padding:5vh 4vw;}
         }
 
 	</style>
 </head>
 <body>
+    <header>
+        <a href="index.html" id="index-link">Overzicht</a>
+        <a href="#" id="vorige_vlucht">Vorige vlucht</a>
+        <a href="#" id="volgende_vlucht">Volgende vlucht</a>
+    </header>
+
     <main>
-    <header class="screen">
+    <div class="screen" id="omschrijving">
     <h1>Vlucht <span id="date"></span></h1>
     <p id="summary"></p>
 
@@ -42,7 +60,7 @@
         <tr><td>Duur</td><td id="duration"></td></tr>
         <tr class="bold"><td>Totale vliegtijd</td><td id="total_time"></td></tr>
     </table>
-    </header>
+    </div>
 
     <div class="screen">
     	<div class="chart" id="map"></div>
