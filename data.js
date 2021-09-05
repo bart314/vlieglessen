@@ -135,7 +135,7 @@ async function create_progress_array(progress) {
         rv[f] = rv[f] || []
 
         let foo = data['onderdelen'].filter( e => e.id==p[0] )[0]
-	foo['grade'] = p[1]
+	    foo['grade'] = p[1]
         rv[f].push(foo)
       }
     })
