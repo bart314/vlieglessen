@@ -3,7 +3,8 @@ var marker
 const mymap = L.map('map');
 const marker_options = {   color: 'red', fillOpacity: 0.5, radius: 500, weight:1}
 const f_number = parseInt(new URLSearchParams(window.location.search).get('f')) || 1
-const max_number = 8 
+console.log(f_number)
+const max_number = 9 
 
 if (f_number > 1) {
     d("vorige_vlucht").href=`?f=${f_number-1}`
