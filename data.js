@@ -1,7 +1,7 @@
 var flight_data = []
 var marker
 const mymap = L.map('map');
-const marker_options = {   color: 'red', fillOpacity: 0.5, radius: 500, weight:1}
+const marker_options = {   color: 'red', fillOpacity: 0.5, radius: 5, weight:1}
 const f_number = parseInt(new URLSearchParams(window.location.search).get('f')) || 1
 console.log(f_number)
 const max_number = 9 
@@ -111,12 +111,13 @@ function sh0w_elevation(eles, times) {
         onHover: (e) => {
             const canvasPosition = Chart.helpers.getRelativePosition(e, chart);
             const dataX = chart.scales.x.getValueForPixel(canvasPosition.x);
+        
 
             if (marker) mymap.removeLayer(marker)
             try {
-                marker = L.circle([flight_data[dataX].data.lat, flight_data[dataX].data.lon ], marker_options)
+                marker = L.circleMarker([flight_data[dataX].data.lat, flight_data[dataX].data.lon ], marker_options)
                   .addTo(mymap);
-            } catch (e) {}
+            } catch (e) {console.error(e)}
         }
      }
 
