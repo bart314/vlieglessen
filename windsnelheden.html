@@ -1,0 +1,51 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windsnelhedenomrekencalculator</title>
+</head>
+<body>
+    <h1>Windsnelhedenomrekencalculator</h1>
+    <p>Omdat in de luchtvaart de windsnelheden in knopen (<i>nautic miles</i>) worden uitgedrukt, de meeste weerapps de windsnelheden in kilometers per uur aangeven, en ikzelf pas een idee van de windsterkte heb wanneer ik weet hoeveel beaufort het is, heb ik even snel onderstaand formuliertje gemaakt. Sure, er zijn genoeg van deze calculators online te vinden, maar op deze manier hoef ik niet steeds te zoeken.</p>
+
+    <form>
+      <div>
+        <label for="kmh">kilometer per uur</label>
+        <input type="text" name="kmh" oninput="calculate(this)">
+      </div>
+        
+      <div>
+        <label for="nml">knopen</label>
+        <input type="text" name="nml" oninput="calculate(this)">
+      </div>
+
+      <div>
+        <label for="bft">Beaufort</label>
+        <input type="text" name="bft" oninput="calculate(this)">
+      </div>
+
+      <div>
+        <label for="mph">Mijl per uur</label>
+        <input type="text" name="mph" oninput="calculate(this)">
+      </div>
+
+      <div>
+        <label for="mps">Meters per seconde</label>
+        <input type="text" name="mps" oninput="calculate(this)">
+      </div>
+
+      <div>
+        <label for="kmh">kilometer per uur</label>
+        <input type="text" name="kmh" oninput="calculate(this)">
+      </div>
+    </form>
+
+    <script>
+        function calculate(el) {
+            console.log(el.name)
+        }
+    </script>
+
+</body>
+</html>
