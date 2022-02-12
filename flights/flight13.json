@@ -1,0 +1,19 @@
+{
+    "summary": {
+        "date":"12 februari 2022",
+        "instructor":"SI",
+        "airplane":"Tecnam PH-4M6",
+        "wheather":"Prachtig weer, maar wel koud. Behoorlijk sterke wind (11 knopen)",
+        "summary":"Opnieuw een intense vlucht. Er was een behoorlijke wind, die boven de duizend voet wel flink afnam. De laagstaande zon zorde voor wat heiïge zicht. Voor het eerst overtrekken geoefend en zelf uitgevoerd, evenals stijle bochten (zestig graden). Het was, in de woorden van de instructeur, een beetje stuntvliegen. Ook weer het toetsel uit de hangar gehaald en de motor gecheckt.<br/>Helaas was de Garmin om de één of andere reden niet goed opgeladen, dus ik heb geen route opgeslagen.",
+        "duration":"1:00",
+        "total_time":"13:40"},
+      "costs": {
+        "rent":0,
+        "costs-instructor":25.00,
+        "landing":23.25,
+        "costs-flight":48.25,
+        "costs-total":1298.05
+      },
+      "progress":[[2,"V"],[4,"V"], [5,"V"], [6,"G"], [7,"V"], [8,"G"], [9,"G"], [10,"G"], [11,"G"], [12,"V"], [13,"G"], [14,"V"], [15,"D"], [16,"G"], [17,"V"], [18,"G"], [19,"G"], [20,"G"], [21,"V"], [23,"V"], [24,"V"], [26,"V"], [31,"V"], [35,"V"]],
+    "flight_data":[{}]
+}

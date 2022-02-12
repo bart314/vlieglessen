@@ -4,7 +4,7 @@ const mymap = L.map('map');
 const marker_options = {   color: 'red', fillOpacity: 0.5, radius: 5, weight:1}
 const f_number = parseInt(new URLSearchParams(window.location.search).get('f')) || 1
 console.log(f_number)
-const max_number = 12 
+const max_number = 13 
 
 if (f_number > 1) {
     d("vorige_vlucht").href=`?f=${f_number-1}`
@@ -94,7 +94,6 @@ function sh0w_elevation(eles, times) {
         }]
     }
 
-    //https://stackoverflow.com/a/68138981/10974490
     //https://stackoverflow.com/a/43658507/10974490
     let options = {
         maintainAspectRatio: false,
