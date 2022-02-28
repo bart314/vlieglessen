@@ -1,15 +1,5 @@
-/*
-let org_data = [
-    { "lat": 53.1197743, "lon": 6.1374082, "ele": 13.4, "time": "2021-06-19T07:51:29.000Z" },
-    { "lat": 53.1197458, "lon": 6.1373892, "ele": 12.6, "time": "2021-06-19T07:52:25.000Z" },
-    { "lat": 53.1197458, "lon": 6.1373892, "ele": 12.6, "time": "2021-06-19T07:53:52.000Z" },
-    { "lat": 53.1197458, "lon": 6.1373892, "ele": 12.6, "time": "2021-06-19T07:53:55.000Z" },
-    { "lat": 53.1197415, "lon": 6.1373841, "ele": 13.2, "time": "2021-06-19T07:51:39.000Z" },
-    { "lat": 53.1197458, "lon": 6.1373892, "ele": 14.6, "time": "2021-06-19T07:52:55.000Z" },
-]
-*/
 let gpxParser = require('gpxparser');
-let fetch = require('node-fetch')
+let fetch = import('node-fetch')
 const fs = require('fs');
 
 let org_data = []
