@@ -4,7 +4,7 @@ const mymap = L.map('map');
 const marker_options = {   color: 'red', fillOpacity: 0.5, radius: 5, weight:1}
 const f_number = parseInt(new URLSearchParams(window.location.search).get('f')) || 1
 console.log(f_number)
-const max_number = 14 
+const max_number = 18 
 
 if (f_number > 1) {
     d("vorige_vlucht").href=`?f=${f_number-1}`

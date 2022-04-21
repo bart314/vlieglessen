@@ -1,0 +1,19 @@
+{
+    "summary": {
+        "date":"30 maart 2022",
+        "instructor":"BZ",
+        "airplane":"Tecnam PH-4R1",
+        "wheather":"Fijn voorjaarsweer, weinig wind, goed uitzicht.",
+        "summary":"Eerst een stukje rechtuit vliegen tot aan de zendmast bij Smilde. Daar omheen gevlogen en weer terug naar het veld. Daar vijf touch and go's gemaakt. Helaas had de Garmin niks opgenomen...",
+        "duration":"1:00",
+        "total_time":"19:00"},
+      "costs": {
+        "rent":0,
+        "costs-instructor":29.00,
+        "landing":14.00,
+        "costs-flight":43.00,
+        "costs-total":1469.55
+      },
+      "progress":[[2,"V"],[4,"G"], [5,"G"], [6,"G"], [7,"G"], [8,"G"], [9,"G"], [10,"G"], [11,"V"], [12,"V"], [13,"V"], [14,"V"]],
+    "flight_data":[{}]
+}
