@@ -8,11 +8,11 @@
         "duration":"1:00",
         "total_time":"19:00"},
       "costs": {
-        "rent":0,
+        "rent":102.60,
         "costs-instructor":29.00,
         "landing":14.00,
-        "costs-flight":43.00,
-        "costs-total":1469.55
+        "costs-flight":145.60,
+        "costs-total":1920.30
       },
       "progress":[[2,"V"],[4,"G"], [5,"G"], [6,"G"], [7,"G"], [8,"G"], [9,"G"], [10,"G"], [11,"V"], [12,"V"], [13,"V"], [14,"V"]],
     "flight_data":[{}]
