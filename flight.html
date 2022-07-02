@@ -50,15 +50,15 @@
 
     <main>
     <div class="screen" id="omschrijving">
-    <h1>Vlucht <span id="date"></span></h1>
-    <p id="summary"></p>
+    <h1>Vlucht <span id="datum"></span></h1>
+    <p id="samenvatting"></p>
 
     <table>
-        <tr><td>Vliegtuig</td><td id="airplane"></td></tr>
-        <tr><td>Instructeur</td><td id="instructor"></td></tr>
-        <tr><td>Weer</td><td id="wheather"></td></tr>
-        <tr><td>Duur</td><td id="duration"></td></tr>
-        <tr class="bold"><td>Totale vliegtijd</td><td id="total_time"></td></tr>
+        <tr><td>Vliegtuig</td><td id="toestel"></td></tr>
+        <tr><td>Instructeur</td><td id="instructeur"></td></tr>
+        <tr><td>Weer</td><td id="weer"></td></tr>
+        <tr><td>Duur</td><td id="duur"></td></tr>
+        <tr class="bold"><td>Totale vliegtijd</td><td id="totale_tijd"></td></tr>
     </table>
     </div>
 
@@ -74,11 +74,11 @@
     <div class="screen">
     <h2>Kosten</h2>
     <table>
-        <tr><td>huur vliegtuig</td><td class="costs" id="rent"></td></tr>
-        <tr><td>instructeur</td><td class="costs" id="costs-instructor"></td></tr>
+        <tr><td>huur vliegtuig</td><td class="costs" id="huur"></td></tr>
+        <tr><td>instructeur</td><td class="costs" id="lesgeld"></td></tr>
         <tr><td>landingsgeld</td><td class="costs" id="landing"></td></tr>
-        <tr><td>Kosten deze vlucht</td><td class="costs" id="costs-flight"></td></tr>
-        <tr class="bold"><td>Totale kosten</td><td class="costs" id="costs-total"></td></tr>
+        <tr><td>Kosten deze vlucht</td><td class="costs" id="vluchtkosten"></td></tr>
+        <tr class="bold"><td>Totale kosten</td><td class="costs" id="totale_kosten"></td></tr>
     </table>
     </div>
 
@@ -93,5 +93,5 @@
     <script src="js/leaflet.js"></script>
     <script src="js/GPXParser.js"></script>
     <script src="js/chart.min.js"></script>
-    <script src="data.js"> </script>
+    <script src="data.js" type="module"> </script>
 </html>

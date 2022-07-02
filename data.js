@@ -1,9 +1,44 @@
-var flight_data = []
+import { data } from './flight-data'
+
+function get_time_string(minutes) {
+  let hrs = Math.floor(minutes/60)
+  hrs = hrs < 10 ? `0${hrs}` : `${hrs}`
+  let mins = minutes%60
+  mins = mins < 10 ? `0${mins}` : `${mins}`
+  return `${hrs}:${mins}`
+}
+
+data.forEach ( el => el.datum = new Date(el.datum) )
+console.log(data)
+//var flight_data = []
 var marker
 const mymap = L.map('map');
 const marker_options = {   color: 'red', fillOpacity: 0.5, radius: 5, weight:1}
 const f_number = parseInt(new URLSearchParams(window.location.search).get('f')) || 1
-console.log(f_number)
+const thisday = data[f_number-1]
+const previousdays = data.filter( el => el.datum<=new Date(thisday.datum) )
+
+thisday.vluchtkosten = thisday.lesgeld + thisday.landing + thisday.huur
+thisday.totale_kosten = previousdays.map( el=> el.lesgeld+el.landing+el.huur ).reduce( (acc,el) => acc+el )
+thisday.totale_tijd = get_time_string(previousdays.map( el => el.duur ).reduce ( (acc,el) => acc+el ))
+
+thisday.duur = get_time_string(thisday.duur)
+
+for (let i of ['datum','instructeur','toestel','weer','samenvatting','duur','totale_tijd']) {
+    document.getElementById(i).innerHTML = thisday[i]
+}
+
+
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat
+const formatter = new Intl.NumberFormat('nl-NL', { style: 'currency', currency: 'EUR'}) 
+for (let i of ['huur','lesgeld','landing','vluchtkosten','totale_kosten']) {
+    d(i).innerHTML = formatter.format(thisday[i])
+}
+
+//,'total_time'
+
+console.log(previousdays)
+
 const max_number = 21 
 
 if (f_number > 1) {
@@ -38,6 +73,7 @@ fetch(`flights/flight${f_number}.gpx`)
     mymap.fitBounds(polyline.getBounds());
 })
 
+/*
 fetch(`flights/flight${f_number}.json`)
 .then ( r => r.json() )
 .then ( resp => {
@@ -48,7 +84,7 @@ fetch(`flights/flight${f_number}.json`)
     let elevation = flight_data.map ( p => p.data.ele)
     sh0w_elevation(elevation, times)
 })
-
+*/
 async function show_progress(progress) {
   create_progress_array( progress )
   .then (data => {
@@ -66,18 +102,6 @@ async function show_progress(progress) {
       }
       document.querySelector('#progress').innerHTML = html
     })
-}
-
-function show_summary(data) {
-    for (i of ['date','instructor','airplane','wheather','summary','duration','total_time']) {
-        d(i).innerHTML = data[0][i]
-    }
-
-    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat
-    const formatter = new Intl.NumberFormat('nl-NL', { style: 'currency', currency: 'EUR'}) 
-    for (i of ['rent','costs-instructor','landing','costs-flight','costs-total']) {
-        d(i).innerHTML = formatter.format(data[1][i])
-    }
 }
 
 function d(el) {
