@@ -9,8 +9,6 @@ function get_time_string(minutes) {
 }
 
 data.forEach ( el => el.datum = new Date(el.datum) )
-console.log(data)
-//var flight_data = []
 var marker
 const mymap = L.map('map');
 const marker_options = {   color: 'red', fillOpacity: 0.5, radius: 5, weight:1}
@@ -23,11 +21,11 @@ thisday.totale_kosten = previousdays.map( el=> el.lesgeld+el.landing+el.huur ).r
 thisday.totale_tijd = get_time_string(previousdays.map( el => el.duur ).reduce ( (acc,el) => acc+el ))
 
 thisday.duur = get_time_string(thisday.duur)
+thisday.datum = `Vlucht ${f_number}: ` + thisday.datum.toLocaleString('nl-NL', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })
 
 for (let i of ['datum','instructeur','toestel','weer','samenvatting','duur','totale_tijd']) {
     document.getElementById(i).innerHTML = thisday[i]
 }
-
 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat
 const formatter = new Intl.NumberFormat('nl-NL', { style: 'currency', currency: 'EUR'}) 
@@ -39,8 +37,6 @@ for (let i of ['huur','lesgeld','landing','vluchtkosten','totale_kosten']) {
 
 console.log(previousdays)
 
-const max_number = 21 
-
 if (f_number > 1) {
     d("vorige_vlucht").href=`?f=${f_number-1}`
 } else {
@@ -48,7 +44,7 @@ if (f_number > 1) {
     d("vorige_vlucht").classList.add('disabled')
 }
 
-if (f_number < max_number) {
+if (f_number < data.length) {
     d('volgende_vlucht').href =`?f=${f_number + 1}`
 } else {
     d("volgende_vlucht").href=""
