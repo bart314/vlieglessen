@@ -72,18 +72,20 @@ fetch(`flights/flight${f_number}.gpx`)
 .catch ( err => {
     console.error('not found')
     document.querySelector('#map').innerHTML = 'Geen data opgenomen'
-    document.querySelector('#canvas').style.display = 'none'
-
 })
 
 fetch(`flights/flight${f_number}.json`)
-.then ( resp => resp.json() )
+.then ( resp => {
+    if (!r.ok) throw new Error ('file not found')
+    return r.json() 
+})
 .then ( json => {
     let flight_data = json.flight_data
     let times = flight_data.map( p => p.time)
     let elevation = flight_data.map ( p => p.data.ele)
     show_elevation(elevation, times)
 })
+.catch ( err => document.querySelector('#canvas').style.display = 'none' )
 
 /*
 fetch(`flights/flight${f_number}.json`)
