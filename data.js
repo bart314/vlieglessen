@@ -35,8 +35,6 @@ for (let i of ['huur','lesgeld','landing','vluchtkosten','totale_kosten']) {
 
 //,'total_time'
 
-console.log(previousdays)
-
 if (f_number > 1) {
     d("vorige_vlucht").href=`?f=${f_number-1}`
 } else {
@@ -58,7 +56,10 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(mymap);
 
 fetch(`flights/flight${f_number}.gpx`)
-.then ( r => r.text() )
+.then ( r => {
+    if (!r.ok) throw new Error ('file not found')
+    return r.text() 
+})
 .then ( gpx => {
     let parser = new gpxParser();
     parser.parse(gpx);
@@ -67,6 +68,21 @@ fetch(`flights/flight${f_number}.gpx`)
 
     // zoom the map to the polyline
     mymap.fitBounds(polyline.getBounds());
+})
+.catch ( err => {
+    console.error('not found')
+    document.querySelector('#map').innerHTML = 'Geen data opgenomen'
+    document.querySelector('#canvas').style.display = 'none'
+
+})
+
+fetch(`flights/flight${f_number}.json`)
+.then ( resp => resp.json() )
+.then ( json => {
+    let flight_data = json.flight_data
+    let times = flight_data.map( p => p.time)
+    let elevation = flight_data.map ( p => p.data.ele)
+    show_elevation(elevation, times)
 })
 
 /*
@@ -104,7 +120,7 @@ function d(el) {
     return document.getElementById(el)
 }
 
-function sh0w_elevation(eles, times) {
+function show_elevation(eles, times) {
     let data = { labels:times,
         datasets: [{
           label: 'Hoogte (meters)',
@@ -127,6 +143,7 @@ function sh0w_elevation(eles, times) {
             mode:'index',
             intersect: false
         },
+        /*
         onHover: (e) => {
             const canvasPosition = Chart.helpers.getRelativePosition(e, chart);
             const dataX = chart.scales.x.getValueForPixel(canvasPosition.x);
@@ -138,6 +155,7 @@ function sh0w_elevation(eles, times) {
                   .addTo(mymap);
             } catch (e) {console.error(e)}
         }
+        */
      }
 
     let config = { type: 'line', data, options }
