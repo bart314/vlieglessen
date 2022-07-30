@@ -9,6 +9,7 @@ function get_time_string(minutes) {
 }
 
 data.forEach ( el => el.datum = new Date(el.datum) )
+
 var marker
 const mymap = L.map('map');
 const marker_options = {   color: 'red', fillOpacity: 0.5, radius: 5, weight:1}
