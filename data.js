@@ -77,8 +77,8 @@ fetch(`flights/flight${f_number}.gpx`)
 
 fetch(`flights/flight${f_number}.json`)
 .then ( resp => {
-    if (!r.ok) throw new Error ('file not found')
-    return r.json() 
+    if (!resp.ok) throw new Error ('file not found')
+    return resp.json() 
 })
 .then ( json => {
     let flight_data = json.flight_data
