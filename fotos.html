@@ -1,0 +1,52 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foto's van de lessen</title>
+    <style>
+body { padding:2vh 2vw; font-family:Calibri,Verdana,san-serif; }
+.grid-container { display:grid; grid-column-gap: 50px; grid-row-gap: 50px; padding: 10px; height: 80vh; width: 60vw; margin: auto; }
+
+.grid-container { grid-template-columns: auto; }
+.grid-container img { width:100%; cursor:pointer; }
+.grid-container img:hover { opacity:0.7; }
+
+.grid-item { text-align:center; } 
+
+@media (min-width:600px) {
+    .grid-container { grid-template-columns:1fr 1fr 1fr; }
+}
+
+/* parts for the modal window of the images */
+/* from https://www.w3schools.com/howto/howto_css_modal_images.asp */
+#modal-image { cursor:default; opacity:1;}
+.modal{display:none;position:fixed;z-index:1;padding-top:100px;left:0;top:0;width:100vw;height:100vh;overflow:auto;background-color:rgb(0,0,0);background-color:rgba(0,0,0,0.9)}
+.modal-content{margin:auto;display:block;width:80%;max-width:700px}
+#caption{margin:auto;display:block;width:80%;max-width:700px;text-align:center;color:#ccc;padding:10px 0;height:150px}
+#caption,.modal-content{animation-name:zoom;animation-duration:0.3s}
+</style>
+</head>
+<body>
+
+<h1>Foto's van de vluchtend</h1>
+<p>Tijdens, voor en na de lessen maak ik of de instructeur wel eens een paar foto's. Hieronder een kleine selectie van de meest interessante.</p>
+
+<div id="menu" class="grid-container">
+    <div class="grid-item"><img src="imgs/sneek2.jpeg" alt="Vliegen over de Waterhoenstraat (foto 5 augustus 2022)">De Waterhoenstraat van bovenaf</div>
+    <div class="grid-item"><img src="imgs/sneek1.jpeg" alt="Vliegen over Sneek (foto 5 augustus 2022)">Foto van Sneek</div>
+    <div class="grid-item"><img src="imgs/bart-piloot3.jpeg" alt="Wachten op de instructeur (foto 5 augustus 2022)">Wachten op de instructeur</div>
+    <div class="grid-item"><img src="imgs/wad.jpeg" alt="Zonsondergang boven het wad (foto 3 juli 2022)">Zonsondergang boven het wad</div>
+    <div class="grid-item"><img src="imgs/friesland.jpeg" alt="Een mooie overzichtsfoto van Fryslân (foto 3 juli 2022)">Uitzicht over Fryslân</div>
+    <div class="grid-item"><img src="imgs/ameland.jpeg" alt="Onderweg naar Ameland (foto 3 juli 2022">Onderweg naar Ameland</div>
+    <div class="grid-item"><img src="imgs/cockpit.jpeg" alt="Het zicht van de cockpit van de M6 (foto 4 juni 2022)">Foto van de cockpit</div>
+    <div class="grid-item"><img src="imgs/piloot2.jpeg" alt="Bart als piloot (foto 7 april 2022)">Bart als piloot</div>
+    <div class="grid-item"><img src="imgs/PMkanaal.jpeg" alt="Het PM kanaal doorkruist De Lije (foto 13 maart 2022)">PM Kanaal door Friesland</div>
+    <div class="grid-item"><img src="imgs/bart-piloot2.jpeg" alt="Ergens boven provincie Groningen (foto 6 oktober 2021)">Boven Groningen</div>
+    <div class="grid-item"><img src="imgs/vliegveld.jpeg" alt="Het vliegveld van bovenaf gezien (foto 7 oktober 2021">Vliegveld van boven</div>
+    <div class="grid-item"><img src="imgs/landing.jpeg" alt="Short final op 07 (foto: 19 september 2021)">Short final op 07</div>
+</body>
+
+<script src="imgs.js"></script>
+
+</html>
