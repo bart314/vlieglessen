@@ -20,9 +20,15 @@
         table#progress  tbody:nth-child(odd) { background-color:green; }
         table#progress  tbody:nth-child(even) { background-color:lightgreen; }
 
+        footer { position:fixed; bottom:0; width:95vw; }
+        footer>div { display:flex; justify-content:space-between; }
+        footer div.buttons img { margin-left:10px; }
+
+        /* footer div.buttons img  { margin-left:10px; } */
+
         /* https://medium.com/samsung-internet-dev/horizontally-scrolling-panes-with-clean-html-and-modern-css-7372596932c7 */
         @media only screen and (max-width: 768px) {
-          div.chart { width:auto; }
+          div.chart { width:97vw; }
           .screen { height:99vh; width:93vw; margin:0;padding:3vh 1vw; scroll-snap-align:start; scroll-snap-stop:always; }
           main { display:grid; grid-template-rows:1fr; grid-auto-flow:column; grid-auto-columns:auto; overflow-x:scroll;  scroll-snap-type:x mandatory; }
           header { display:none; }
@@ -37,6 +43,7 @@
           a.disabled { color:gray; cursor:not-allowed; }
           a.disabled:hover { text-decoration:none;}
           main { padding:5vh 4vw;}
+          footer { display:none; }
         }
 
 	</style>
@@ -62,7 +69,7 @@
     </table>
     </div>
 
-    <div class="screen">
+    <div class="screen" id="chart">
     	<div class="chart" id="map"></div>
     </div>
 
@@ -71,7 +78,7 @@
 		<canvas id="elevation"></canvas>
 	</div>
 
-    <div class="screen">
+    <div class="screen" id="costs">
     <h2>Kosten</h2>
     <table>
         <tr><td>huur vliegtuig</td><td class="costs" id="huur"></td></tr>
@@ -88,6 +95,18 @@
     </div>
 	
     </main>
+
+    <footer>
+        <div>
+        <div><a href="index.html"><img src="imgs/icons/home.png" alt="Home"></a></div>
+        <div class="buttons">        
+          <a href="#omschrijving"><img src="imgs/icons/summary.png" alt="Summary">
+          <a href="#chart"><img src="imgs/icons/map.png" alt="Map">
+          <a href="#elevation"><img src="imgs/icons/elevation.png" alt="elevation">
+          <a href="#costs"><img src="imgs/icons/money.png" alt="Costs">
+        </div>
+    </div>
+    </footer>
 
 </body>
     <script src="js/leaflet.js"></script>
