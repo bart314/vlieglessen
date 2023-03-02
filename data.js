@@ -124,6 +124,7 @@ function d(el) {
 }
 
 function show_elevation(eles, times) {
+    console.log('hier?')
     let data = { labels:times,
         datasets: [{
           label: 'Hoogte (meters)',
@@ -163,6 +164,7 @@ function show_elevation(eles, times) {
 
     let config = { type: 'line', data, options }
     const chart = new Chart( document.getElementById('elevation'), config)
+    console.log(chart)
 }
 
 
